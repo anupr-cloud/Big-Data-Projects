@@ -14,8 +14,8 @@ movies_df = spark.read \
    .format("jdbc") \
    .option("url", "jdbc:postgresql://localhost:5432/movies") \
    .option("dbtable", "movie") \
-   .option("user", "postgres") \
-   .option("password", "aforapple") \
+   .option("user", "<username>") \
+   .option("password", "<password>") \
    .option("driver", "org.postgresql.Driver") \
    .load()
 
