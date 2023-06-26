@@ -14,8 +14,8 @@ def extract_movies_to_df():
         .format("jdbc") \
         .option("url","jdbc:postgresql://localhost:5432/movies") \
         .option("dbtable","movie") \
-        .option("user","postgres") \
-        .option("password","aforapple") \
+        .option("user","<username>") \
+        .option("password","<password>") \
         .option("driver","org.postgresql.Driver") \
         .load()
     return movies_df
@@ -28,14 +28,14 @@ def extract_users_to_df():
         .format("jdbc") \
         .option("url","jdbc:postgresql://localhost:5432/movies") \
         .option("dbtable","users") \
-        .option("user","postgres") \
-        .option("password","aforapple") \
+        .option("user","<username>") \
+        .option("password","<password>") \
         .option("driver","org.postgresql.Driver") \
         .load()
     return users_df
 
 
-
+# transforming the users and movie table 
 def transform_avg_ratings(movies_df,users_df):
 
     # transforming tables
@@ -49,12 +49,12 @@ def transform_avg_ratings(movies_df,users_df):
 # load transformed dataframe into the Postgresql database
 def load_to_db(df):
     properties = {
-        "user":"postgres",
-        "password":"aforapple",
+        "user":"<username>",
+        "password":"<password>",
         "driver":"org.postgresql.Driver"
     }
     df.write.jdbc(url="jdbc:postgresql://localhost:5432/movies",
-                  table="avg_ratingg",
+                  table="avg_rating",
                   mode="overwrite",
                   properties=properties
                   )
