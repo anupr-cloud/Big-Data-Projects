@@ -1,1 +1,1 @@
-This folder contains dag file used for Scheduling
+This folder contains airflow dag file used for Scheduling
